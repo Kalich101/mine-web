@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sparkasse</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #28a745;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: #fff;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        p {
+            margin: 10px 0 20px;
+            font-size: 16px;
+        }
+
+    </style>
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1150806019712474');
+        fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1150806019712474&ev=PageView&noscript=1"/>
+        </noscript>
+
+        <script>
+            fbq('track', 'Lead');
+        </script>
+</head>
+<body>
+    <div class="success-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+            <path d="M13.485 1.929a1.5 1.5 0 0 1 0 2.121l-7.86 7.86a1.5 1.5 0 0 1-2.12 0L1.93 9.414a1.5 1.5 0 1 1 2.12-2.121L6 9.243l6.364-6.364a1.5 1.5 0 0 1 2.121 0z"/>
+        </svg>
+    </div>
+    <h1>Vielen Dank!</h1>
+    <p>Ihre Anfrage wurde erfolgreich gesendet.<br>Danke, dass Sie die Sparkasse gewählt haben.</p>
+</body>
+</html>
